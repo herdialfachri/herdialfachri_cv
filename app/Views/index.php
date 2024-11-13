@@ -22,8 +22,8 @@
     <!-- favicons
     ================================================== -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="main/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="main/favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
 
 </head>
@@ -90,22 +90,21 @@
 
                     <div class="column">
                         <div class="text-pretitle with-line">
-                            Hello Recruiter
+                            <?= esc($get2know['title']) ?> <!-- Tampilkan title -->
                         </div>
 
                         <h1 class="text-huge-title">
-                            I am Herdi, a <br>
-                            Software Engineer <br>
-                            & Graphic Designer <br>
-                            based in Sukabumi.
+                            <?= esc($get2know['description']) ?> <!-- Tampilkan description -->
                         </h1>
                     </div>
 
+
                     <ul class="intro-social">
-                        <li><a href="https://github.com/herdialfachri" target="_blank">Github</a></li>
-                        <li><a href="https://www.linkedin.com/in/herdialfachrii" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://instagram.com/herdialfachri/" target="_blank">Instagram</a></li>
+                        <?php foreach ($sosmed as $item): ?>
+                            <li><a href="<?= esc($item['url']) ?>" target="_blank"><?= esc($item['platform']) ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
+
 
                 </div> <!-- end intro content -->
 
@@ -126,28 +125,24 @@
                 <div class="row about-info wide" data-animate-block>
 
                     <div class="column lg-6 md-12 about-info__pic-block">
-                        <img src="main/images/about-photo.png"
-                            srcset="main/images/about-photo.png 1x, images/about-photo@2x.png 2x" alt="" class="about-info__pic" data-animate-el>
+                        <img src="<?= base_url($aboutme['image']); ?>"
+                            srcset="<?= base_url($aboutme['image']); ?> 1x, <?= base_url($aboutme['image']); ?>@2x 2x"
+                            alt="Deskripsi Gambar"
+                            class="about-info__pic" data-animate-el>
                     </div>
 
                     <div class="column lg-6 md-12">
                         <div class="about-info__text">
-
                             <h2 class="text-pretitle with-line" data-animate-el>
-                                Hello Folks
+                                <?= esc($aboutme['title']); ?> <!-- Tampilkan title -->
                             </h2>
                             <p class="attention-getter" data-animate-el>
-                                My name is M. Herdi Al-Fachri, a 7th-semester Informatics Engineering. I specialize in Android development
-                                using Kotlin, building efficient and user-friendly mobile applications. Additionally,
-                                I have hands-on experience in backend web development with PHP, creating robust and
-                                scalable systems. My creative skills extend to graphic design, where I combine
-                                aesthetics and functionality to deliver visually compelling content. I am always
-                                eager to take on new challenges.
+                                <?= esc($aboutme['description']); ?> <!-- Tampilkan description -->
                             </p>
-                            <a href="https://www.linkedin.com/in/herdialfachrii" target="_blank" class="btn btn--medium u-fullwidth" data-animate-el>Download CV</a>
-
+                            <a href="<?= esc($aboutme['target_btn']) ?>" target="_blank" class="btn btn--medium u-fullwidth" data-animate-el><?= esc($aboutme['button_desc']) ?></a>
                         </div>
                     </div>
+
                 </div> <!-- about-info -->
 
 
@@ -157,10 +152,9 @@
                         <h2 class="text-pretitle" data-animate-el>Expertise</h2>
 
                         <ul class="skills-list h1" data-animate-el>
-                            <li>Android Development</li>
-                            <li>Website Development</li>
-                            <li>UI/UX Design</li>
-                            <li>Graphic Design.</li>
+                            <?php foreach ($myskill as $items): ?>
+                                <li><?= esc($items['skills']) ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
 
                     </div>
@@ -186,24 +180,63 @@
                             <div class="timeline__block">
                                 <div class="timeline__bullet"></div>
                                 <div class="timeline__header">
-                                    <h4 class="timeline__title">Dropbox</h3>
-                                        <h5 class="timeline__meta">Product Designer</h5>
-                                        <p class="timeline__timeframe">August 2019 - Present</p>
+                                    <a href="https://www.pemdespalasarigirang.id/" target="_blank">
+                                        <h4 class="timeline__title">Internship at Desa Palasari Girang</h4>
+                                    </a>
+                                    <h5 class="timeline__meta">Android Developer</h5>
+                                    <p class="timeline__timeframe">July 2024 - Present</p>
                                 </div>
                                 <div class="timeline__desc">
-                                    <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p>
+                                    <p>Learn to master Kotlin programming language in order to build a good Android applications,
+                                        learn how to utilize APIs with the Retrofit library, learn the basics of AI for Android
+                                        applications.</p>
                                 </div>
                             </div>
 
                             <div class="timeline__block">
                                 <div class="timeline__bullet"></div>
                                 <div class="timeline__header">
-                                    <h4 class="timeline__title">Microsoft</h4>
-                                    <h5 class="timeline__meta">Frontend Developer</h5>
-                                    <p class="timeline__timeframe">August 2016 - July 2019</p>
+                                    <a href="https://php2d.kemdikbud.go.id/" target="_blank">
+                                        <h4 class="timeline__title">PPK Ormawa Awarde 2023</h4>
+                                    </a>
+                                    <h5 class="timeline__meta">Web Developer</h5>
+                                    <p class="timeline__timeframe">February 2023 - June 2023</p>
                                 </div>
                                 <div class="timeline__desc">
-                                    <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p>
+                                    <p>Being one of the selected teams out of 2110 sub-proposals submitted, collaborated with team
+                                        to created a website-based information system application for the Palabuhanratu village,
+                                        developed an IoT-based for Tsunami warning device.</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline__block">
+                                <div class="timeline__bullet"></div>
+                                <div class="timeline__header">
+                                    <a href="https://www.rsudsyamsudin.co.id/" target="_blank">
+                                        <h4 class="timeline__title">Internship at RSUD, R. Syamsudin, SH</h4>
+                                    </a>
+                                    <h5 class="timeline__meta">IT Support</h5>
+                                    <p class="timeline__timeframe">December 2018 - February 2019</p>
+                                </div>
+                                <div class="timeline__desc">
+                                    <p>Being one of the selected teams out of 2110 sub-proposals submitted, collaborated with team
+                                        to created a website-based information system application for the Palabuhanratu village,
+                                        developed an IoT-based for Tsunami warning device.</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline__block">
+                                <div class="timeline__bullet"></div>
+                                <div class="timeline__header">
+                                    <a href="https://kedaireka.id/" target="_blank">
+                                        <h4 class="timeline__title">Kedaireka Matching Fund Intership</h4>
+                                    </a>
+                                    <h5 class="timeline__meta">Graphic Designer</h5>
+                                    <p class="timeline__timeframe">January 2023</p>
+                                </div>
+                                <div class="timeline__desc">
+                                    <p>Conducted an interview and managed to get 200 data for 2 days for lecturer
+                                        research purposes entitled "Analysis and environmental impact of PT. Kino Indonesia".</p>
                                 </div>
                             </div>
 
@@ -222,9 +255,11 @@
                             <div class="timeline__block">
                                 <div class="timeline__bullet"></div>
                                 <div class="timeline__header">
-                                    <h4 class="timeline__title">University of Life</h3>
-                                        <h5 class="timeline__meta">Master in Graphic Design</h5>
-                                        <p class="timeline__timeframe">April 2015</p>
+                                    <a href="https://ummi.ac.id/" target="_blank">
+                                        <h4 class="timeline__title">Muhammadiyah University of Sukabumi</h4>
+                                    </a>
+                                    <h5 class="timeline__meta">Informatics Engineering</h5>
+                                    <p class="timeline__timeframe">September 2020 - Present</p>
                                 </div>
                                 <div class="timeline__desc">
                                     <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p>
@@ -234,12 +269,30 @@
                             <div class="timeline__block">
                                 <div class="timeline__bullet"></div>
                                 <div class="timeline__header">
-                                    <h4 class="timeline__title">School of Cool Designers</h4>
-                                    <h5 class="timeline__meta">B.A. Degree in Graphic Design</h5>
-                                    <p class="timeline__timeframe">August 2012</p>
+                                    <a href="http://smktpp-sukabumi.sch.id/" target="_blank">
+                                        <h4 class="timeline__title">SMK Teknologi Plus Padjadjaran</h4>
+                                    </a>
+                                    <h5 class="timeline__meta">Computer and Network Engineering</h5>
+                                    <p class="timeline__timeframe">June 2017 - July 2020</p>
                                 </div>
                                 <div class="timeline__desc">
                                     <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline__block">
+                                <div class="timeline__bullet"></div>
+                                <div class="timeline__header">
+                                    <a href="https://grow.google/intl/id_id/" target="_blank">
+                                        <h4 class="timeline__title">Bangkit Academy Alumni 2024</h4>
+                                    </a>
+                                    <h5 class="timeline__meta">Android Developer</h5>
+                                    <p class="timeline__timeframe">February 2024 - July 2024</p>
+                                </div>
+                                <div class="timeline__desc">
+                                    <p>Learn to master Kotlin programming language in order to build a good Android applications,
+                                        learn how to utilize APIs with the Retrofit library, learn the basics of AI for Android
+                                        applications.</p>
                                 </div>
                             </div>
 
@@ -272,8 +325,8 @@
                             <li class="folio-list__item column" data-animate-el>
                                 <a class="folio-list__item-link" href="#modal-01">
                                     <div class="folio-list__item-pic">
-                                        <img src="main/images/portfolio/fuji.jpg"
-                                            srcset="main/images/portfolio/fuji.jpg 1x, images/portfolio/fuji@2x.jpg 2x" alt="">
+                                        <img src="/main/images/portfolio/fuji.jpg"
+                                            srcset="/main/images/portfolio/fuji.jpg 1x, /main/images/portfolio/fuji@2x.jpg 2x" alt="">
                                     </div>
 
                                     <div class="folio-list__item-text">
@@ -295,8 +348,8 @@
                             <li class="folio-list__item column" data-animate-el>
                                 <a class="folio-list__item-link" href="#modal-02">
                                     <div class="folio-list__item-pic">
-                                        <img src="main/images/portfolio/lamp.jpg"
-                                            srcset="main/images/portfolio/lamp.jpg 1x, images/portfolio/lamp@2x.jpg 2x" alt="">
+                                        <img src="/main/images/portfolio/lamp.jpg"
+                                            srcset="/main/images/portfolio/lamp.jpg 1x, /main/images/portfolio/lamp@2x.jpg 2x" alt="">
                                     </div>
 
                                     <div class="folio-list__item-text">
@@ -318,8 +371,8 @@
                             <li class="folio-list__item column" data-animate-el>
                                 <a class="folio-list__item-link" href="#modal-03">
                                     <div class="folio-list__item-pic">
-                                        <img src="main/images/portfolio/rucksack.jpg"
-                                            srcset="main/images/portfolio/rucksack.jpg 1x, images/portfolio/rucksack@2x.jpg 2x" alt="">
+                                        <img src="/main/images/portfolio/rucksack.jpg"
+                                            srcset="/main/images/portfolio/rucksack.jpg 1x, /main/images/portfolio/rucksack@2x.jpg 2x" alt="">
                                     </div>
 
                                     <div class="folio-list__item-text">
@@ -341,8 +394,8 @@
                             <li class="folio-list__item column" data-animate-el>
                                 <a class="folio-list__item-link" href="#modal-04">
                                     <div class="folio-list__item-pic">
-                                        <img src="main/images/portfolio/skaterboy.jpg"
-                                            srcset="main/images/portfolio/skaterboy.jpg 1x, images/portfolio/skaterboy@2x.jpg 2x" alt="">
+                                        <img src="/main/images/portfolio/skaterboy.jpg"
+                                            srcset="/main/images/portfolio/skaterboy.jpg 1x, /main/images/portfolio/skaterboy@2x.jpg 2x" alt="">
                                     </div>
 
                                     <div class="folio-list__item-text">
@@ -364,8 +417,8 @@
                             <li class="folio-list__item column" data-animate-el>
                                 <a class="folio-list__item-link" href="#modal-05">
                                     <div class="folio-list__item-pic">
-                                        <img src="main/images/portfolio/sanddunes.jpg"
-                                            srcset="main/images/portfolio/sanddunes.jpg 1x, images/portfolio/sanddunes@2x.jpg 2x" alt="">
+                                        <img src="/main/images/portfolio/sanddunes.jpg"
+                                            srcset="/main/images/portfolio/sanddunes.jpg 1x, /main/images/portfolio/sanddunes@2x.jpg 2x" alt="">
                                     </div>
 
                                     <div class="folio-list__item-text">
@@ -387,8 +440,8 @@
                             <li class="folio-list__item column" data-animate-el>
                                 <a class="folio-list__item-link" href="#modal-06">
                                     <div class="folio-list__item-pic">
-                                        <img src="main/images/portfolio/minimalismo.jpg"
-                                            srcset="main/images/portfolio/minimalismo.jpg 1x, images/portfolio/minimalismo@2x.jpg 2x" alt="">
+                                        <img src="/main/images/portfolio/minimalismo.jpg"
+                                            srcset="/main/images/portfolio/minimalismo.jpg 1x, /main/images/portfolio/minimalismo@2x.jpg 2x" alt="">
                                     </div>
 
                                     <div class="folio-list__item-text">
@@ -416,7 +469,7 @@
                     -------------------------------------------- -->
                     <div id="modal-01" hidden>
                         <div class="modal-popup">
-                            <img src="main/images/portfolio/gallery/g-fuji.jpg" alt="">
+                            <img src="/main/images/pfortfolio/gallery/g-fuji.jpg" alt="">
 
                             <div class="modal-popup__desc">
                                 <h5>Retro Camera</h5>
@@ -433,7 +486,7 @@
 
                     <div id="modal-02" hidden>
                         <div class="modal-popup">
-                            <img src="main/images/portfolio/gallery/g-lamp.jpg" alt="">
+                            <img src="/main/images/portfolio/gallery/g-lamp.jpg" alt="">
 
                             <div class="modal-popup__desc">
                                 <h5>The White Lamp</h5>
@@ -449,7 +502,7 @@
 
                     <div id="modal-03" hidden>
                         <div class="modal-popup">
-                            <img src="main/images/portfolio/gallery/g-rucksack.jpg" alt="">
+                            <img src="/main/images/portfolio/gallery/g-rucksack.jpg" alt="">
 
                             <div class="modal-popup__desc">
                                 <h5>Rucksuck</h5>
@@ -465,7 +518,7 @@
 
                     <div id="modal-04" hidden>
                         <div class="modal-popup">
-                            <img src="main/images/portfolio/gallery/g-skaterboy.jpg" alt="">
+                            <img src="/main/images/portfolio/gallery/g-skaterboy.jpg" alt="">
 
                             <div class="modal-popup__desc">
                                 <h5>Since Day One</h5>
@@ -482,7 +535,7 @@
                     <div id="modal-05" hidden>
                         <div class="modal-popup">
 
-                            <img src="main/images/portfolio/gallery/g-sanddunes.jpg" alt="">
+                            <img src="/main/images/portfolio/gallery/g-sanddunes.jpg" alt="">
 
                             <div class="modal-popup__desc">
                                 <h5>Sand Dunes</h5>
@@ -498,7 +551,7 @@
 
                     <div id="modal-06" hidden>
                         <div class="modal-popup">
-                            <img src="main/images/portfolio/gallery/g-minimalismo.jpg" alt="">
+                            <img src="/main/images/portfolio/gallery/g-minimalismo.jpg" alt="">
 
                             <div class="modal-popup__desc">
                                 <h5>Minimalismo</h5>
@@ -525,7 +578,7 @@
 
                                 <div class="testimonial-slider__slide swiper-slide">
                                     <div class="testimonial-slider__author">
-                                        <img src="main/images/avatars/user-02.jpg" alt="Author image" class="testimonial-slider__avatar">
+                                        <img src="/main/images/avatars/user-02.jpg" alt="Author image" class="testimonial-slider__avatar">
                                         <cite class="testimonial-slider__cite">
                                             <strong>Tim Cook</strong>
                                             <span>CEO, Apple</span>
@@ -540,7 +593,7 @@
 
                                 <div class="testimonial-slider__slide swiper-slide">
                                     <div class="testimonial-slider__author">
-                                        <img src="main/images/avatars/user-03.jpg" alt="Author image" class="testimonial-slider__avatar">
+                                        <img src="/main/images/avatars/user-03.jpg" alt="Author image" class="testimonial-slider__avatar">
                                         <cite class="testimonial-slider__cite">
                                             <strong>Sundar Pichai</strong>
                                             <span>CEO, Google</span>
@@ -555,7 +608,7 @@
 
                                 <div class="testimonial-slider__slide swiper-slide">
                                     <div class="testimonial-slider__author">
-                                        <img src="main/images/avatars/user-01.jpg" alt="Author image" class="testimonial-slider__avatar">
+                                        <img src="/main/images/avatars/user-01.jpg" alt="Author image" class="testimonial-slider__avatar">
                                         <cite class="testimonial-slider__cite">
                                             <strong>Satya Nadella</strong>
                                             <span>CEO, Microsoft</span>
@@ -570,7 +623,7 @@
 
                                 <div class="testimonial-slider__slide swiper-slide">
                                     <div class="testimonial-slider__author">
-                                        <img src="main/images/avatars/user-06.jpg" alt="Author image" class="testimonial-slider__avatar">
+                                        <img src="/main/images/avatars/user-06.jpg" alt="Author image" class="testimonial-slider__avatar">
                                         <cite class="testimonial-slider__cite">
                                             <strong>Jeff Bezos</strong>
                                             <span>CEO, Amazon</span>
@@ -617,22 +670,22 @@
                     <div class="column lg-3 md-5 tab-6 stack-on-550 contact-block">
                         <h3 class="text-pretitle">Reach me at</h3>
                         <p class="contact-links">
-                            <a href="mailto:sayhello@luther.com" class="mailtoui">sayhello@luther.com</a> <br>
-                            <a href="tel:+1975432345">+197 543 2345</a>
+                            <a href="mailto:alfachri75@gmail.com" class="mailtoui">alfachri75@gmail.com</a> <br>
+                            <a href="tel:+6282122506110">+62 821-2250-6110</a>
                         </p>
                     </div>
                     <div class="column lg-4 md-5 tab-6 stack-on-550 contact-block">
                         <h3 class="text-pretitle">Social</h3>
                         <ul class="contact-social">
-                            <li><a href="#0">Behance</a></li>
-                            <li><a href="#0">Dribble</a></li>
-                            <li><a href="#0">Twitter</a></li>
+                            <li><a href="#0">Facebook</a></li>
+                            <li><a href="#0">Discord</a></li>
+                            <li><a href="#0">LinkedIn</a></li>
                             <li><a href="https://instagram.com/herdialfachri/" target="_blank">Instagram</a></li>
                             <li><a href="#0">Github</a></li>
                         </ul>
                     </div>
                     <div class="column lg-4 md-12 contact-block">
-                        <a href="mailto:sayhello@luther.com" class="mailtoui btn btn--medium u-fullwidth contact-btn">Say Hello.</a>
+                        <a href="mailto:alfachri75@gmail.com" class="mailtoui btn btn--medium u-fullwidth contact-btn">Contact me</a>
                     </div>
                 </div> <!-- end contact-bottom -->
 
@@ -647,7 +700,7 @@
 
             <div class="row">
                 <div class="column ss-copyright">
-                    <span>© Copyright Luther 2021</span>
+                    <span>© Copyright herdialfachri</span>
                     <span>Design by <a href="https://www.styleshout.com/">StyleShout</a> Distribution By <a href="https://themewagon.com">Themewagon</a></span>
                 </div>
 
