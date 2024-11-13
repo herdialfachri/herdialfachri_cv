@@ -23,6 +23,16 @@ class Home extends BaseController
         $get2knowModel = new Get2KnowModel();
         $data['get2know'] = $get2knowModel->first();
         
-        return view('index', $data);
+        return view('main/index', $data);
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard/index');
+    }
+
+    public function login()
+    {
+        return view('auth/login');
     }
 }
